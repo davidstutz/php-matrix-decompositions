@@ -35,7 +35,7 @@ class QRGivens {
      * @param   matrix  matrix to get the qr decomposition of
      */
     public function __construct(&$matrix) {
-        new \Libraries\Assertion($matrix instanceof \Libraries\Matrix, 'Given matrix not of class Matrix.');
+        new Assertion($matrix instanceof Matrix, 'Given matrix not of class Matrix.');
 
         $this->_matrix = $matrix->copy();
 
@@ -89,7 +89,7 @@ class QRGivens {
     public function getQ() {
         // Q is an mxm matrix if m is the maximum of the number of rows and thenumber of columns.
         $m = max($this->_matrix->columns(), $this->_matrix->rows());
-        $Q = new \Libraries\Matrix($m, $m);
+        $Q = new Matrix($m, $m);
         $Q->setAll(0.);
         
         // Begin with the identity matrix.

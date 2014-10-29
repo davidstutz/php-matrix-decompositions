@@ -40,10 +40,10 @@ class LU {
      * @return  vector  permutation
      */
     public function __construct(&$matrix) {
-        new \Libraries\Assertion($matrix instanceof \Libraries\Matrix, 'Given matrix not of class Matrix.');
-        new \Libraries\Assertion($matrix->isSquare(), 'Matrix is not quadratic.');
+        new Assertion($matrix instanceof Matrix, 'Given matrix not of class Matrix.');
+        new Assertion($matrix->isSquare(), 'Matrix is not quadratic.');
 
-        $this->_permutation = new \Libraries\Vector($matrix->rows());
+        $this->_permutation = new Vector($matrix->rows());
         $this->_matrix = $matrix->copy();
         
         for ($j = 0; $j < $this->_matrix->rows(); $j++) {
@@ -75,7 +75,7 @@ class LU {
      * @param   vector  right hand
      */
     public function solve($b) {
-        new \Libraries\Assertion($this->_matrix->rows() == $b->size(), 'Right hand vector does not have correct size.');
+        new Assertion($this->_matrix->rows() == $b->size(), 'Right hand vector does not have correct size.');
         
         $x = $b->copy();
         

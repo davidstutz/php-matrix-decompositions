@@ -43,7 +43,7 @@ class Vector {
         $this->_data = array();
 
         $size = (int)$size;
-        new \Libraries\Assertion($size > 0, 'Invalid size given.');
+        new Assertion($size > 0, 'Invalid size given.');
 
         $this->_size = (int)$size;
     }
@@ -67,8 +67,8 @@ class Vector {
      * @return	boolean	equals
      */
     public function equals($vector) {
-        new \Libraries\Assertion($vector instanceof Vector, 'Given vector not of class Vector.');
-        new \Libraries\Assertion($this->size() == $vector->size(), 'The dimensions do not match.');
+        new Assertion($vector instanceof Vector, 'Given vector not of class Vector.');
+        new Assertion($this->size() == $vector->size(), 'The dimensions do not match.');
 
         for ($i = 0; $i < $this->size(); $i++) {
             if ($vector->get($i) != $this->get($i)) {
@@ -97,7 +97,7 @@ class Vector {
     public function get($position) {
         $position = (int)$position;
 
-        new \Libraries\Assertion($position >= 0 AND $position < $this->size(), 'Tried to access invalid position.');
+        new Assertion($position >= 0 AND $position < $this->size(), 'Tried to access invalid position.');
 
         $value = NULL;
         if (isset($this->_data[$position])) {
@@ -117,7 +117,7 @@ class Vector {
     public function set($position, $value) {
         $position = (int)$position;
 
-        new \Libraries\Assertion($position >= 0 AND $position < $this->size(), 'Tried to access invalid position.');
+        new Assertion($position >= 0 AND $position < $this->size(), 'Tried to access invalid position.');
 
         $this->_data[$position] = $value;
 
@@ -158,7 +158,7 @@ class Vector {
      * @return  vector  this
      */
     public function fromArray($array) {
-        new \Libraries\Assertion(sizeof($array) == $this->size(), 'Array has invalid size.');
+        new Assertion(sizeof($array) == $this->size(), 'Array has invalid size.');
         
         for ($i = 0; $i < $this->size(); $i++) {
             $this->set($i, $array[$i]);
@@ -191,8 +191,8 @@ class Vector {
      * @return	matrix	this
      */
     public function swapEntries($i, $j) {
-        new \Libraries\Assertion($i >= 0 AND $i < $this->size(), 'Tried to access invalid position.');
-        new \Libraries\Assertion($j >= 0 AND $j < $this->size(), 'Tried to access invalid position.');
+        new Assertion($i >= 0 AND $i < $this->size(), 'Tried to access invalid position.');
+        new Assertion($j >= 0 AND $j < $this->size(), 'Tried to access invalid position.');
 
         $tmp = $this->get($i);
         $this->set($i, $this->get($j));
@@ -209,9 +209,9 @@ class Vector {
      * @return	vector	inner product
      */
     public static function inner($a, $b) {
-        new \Libraries\Assertion($a instanceof Vector, 'Given first vector not of class Vector.');
-        new \Libraries\Assertion($b instanceof Vector, 'Given second vector not of class Vector.');
-        new \Libraries\Assertion($a->size() == $b->size(), 'Dimensions do not match.');
+        new Assertion($a instanceof Vector, 'Given first vector not of class Vector.');
+        new Assertion($b instanceof Vector, 'Given second vector not of class Vector.');
+        new Assertion($a->size() == $b->size(), 'Dimensions do not match.');
 
         $size = $a->size();
         $result = 0;
@@ -232,9 +232,9 @@ class Vector {
      */
     public static function multiply($a, $x) {
         // First check dimensions.
-        new \Libraries\Assertion($a instanceof Matrix, 'Given matrix not of class Matrix.');
-        new \Libraries\Assertion($x instanceof Vector, 'Given vector not of class Vector.');
-        new \Libraries\Assertion($a->columns() == $x->size(), 'Given dimensions are not compatible.');
+        new Assertion($a instanceof Matrix, 'Given matrix not of class Matrix.');
+        new Assertion($x instanceof Vector, 'Given vector not of class Vector.');
+        new Assertion($a->columns() == $x->size(), 'Given dimensions are not compatible.');
 
         $c = new Vector($a->rows());
         $c->setAll(0.);
@@ -257,9 +257,9 @@ class Vector {
      */
     public static function add($a, $b) {
         // First check dimensions.
-        new \Libraries\Assertion($a instanceof Vector, 'Given first vector not of class Vector.');
-        new \Libraries\Assertion($b instanceof Vector, 'Given second vector not of class Vector.');
-        new \Libraries\Assertion($a->size() == $b->size(), 'Given dimensions are not compatible.');
+        new Assertion($a instanceof Vector, 'Given first vector not of class Vector.');
+        new Assertion($b instanceof Vector, 'Given second vector not of class Vector.');
+        new Assertion($a->size() == $b->size(), 'Given dimensions are not compatible.');
         
         $c = $a->copy();
         for ($i = 0; $i < $a->size(); $i++) {

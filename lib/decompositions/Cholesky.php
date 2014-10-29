@@ -36,8 +36,8 @@ class Cholesky {
      * @param   matrix
      */
     public function __construct(&$matrix) {
-        new \Libraries\Assertion($matrix instanceof \Libraries\Matrix, 'Given matrix not of class Matrix.');
-        new \Libraries\Assertion($matrix->isSquare(), 'Given matrix is not square.');
+        new Assertion($matrix instanceof Matrix, 'Given matrix not of class Matrix.');
+        new Assertion($matrix->isSquare(), 'Given matrix is not square.');
 
         $this->_matrix = $matrix->copy();
 
@@ -48,7 +48,7 @@ class Cholesky {
             }
 
             // Test if symmetric and positive definite can be guaranteed.
-            new \Libraries\Assertion($d > Cholesky::TOLERANCE * (double)$this->_matrix->get($j, $j), 'Symmetric and positive definite can not be guaranteed: ' . $d . ' > ' . Cholesky::TOLERANCE * (double)$this->_matrix->get($j, $j));
+            new Assertion($d > Cholesky::TOLERANCE * (double)$this->_matrix->get($j, $j), 'Symmetric and positive definite can not be guaranteed: ' . $d . ' > ' . Cholesky::TOLERANCE * (double)$this->_matrix->get($j, $j));
 
             $this->_matrix->set($j, $j, $d);
 
@@ -91,7 +91,7 @@ class Cholesky {
      * @return  matrix  D
      */
     public function getD() {
-        $D = new \Libraries\Matrix($this->_matrix->rows(), $this->_matrix->columns());
+        $D = new Matrix($this->_matrix->rows(), $this->_matrix->columns());
         
         for ($i = 0; $i < $D->rows(); $i++) {
             $D->set($i, $i, $this->_matrix->get($i, $i));

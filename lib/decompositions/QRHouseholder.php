@@ -40,9 +40,9 @@ class QRHouseholder {
      * @param matrix  matrix to get the composition of
      */
     public function __construct(&$matrix) {
-        new \Libraries\Assertion($matrix instanceof \Libraries\Matrix, 'Given matrix not of class Matrix.');
+        new Assertion($matrix instanceof Matrix, 'Given matrix not of class Matrix.');
 
-        $this->_tau = new \Libraries\Vector($matrix->columns());
+        $this->_tau = new Vector($matrix->columns());
         $this->_matrix = $matrix->copy();
 
         for ($j = 0; $j < $this->_matrix->columns(); $j++) {
@@ -68,7 +68,7 @@ class QRHouseholder {
 
             $this->_tau->set($j, 2. / $scalar);
 
-            $w = new \Libraries\Vector($this->_matrix->columns());
+            $w = new Vector($this->_matrix->columns());
             $w->setAll(0.);
 
             // First calculate w = v_j^T * A.
@@ -101,7 +101,7 @@ class QRHouseholder {
     public function getQ() {
         // Q is an m x m matrix if m is the maximum of the number of rows and thenumber of columns.
         $m = max($this->_matrix->columns(), $this->_matrix->rows());
-        $Q = new \Libraries\Matrix($m, $m);
+        $Q = new Matrix($m, $m);
         $Q->setAll(0.);
         
         // Begin with the identity matrix.

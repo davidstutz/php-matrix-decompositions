@@ -54,10 +54,10 @@ class Matrix {
         $this->_data = array();
 
         $rows = (int)$rows;
-        new \Libraries\Assertion($rows > 0, 'Invalid dimensions given.');
+        new Assertion($rows > 0, 'Invalid dimensions given.');
 
         $columns = (int)$columns;
-        new \Libraries\Assertion($columns > 0, 'Invalid dimensions given.');
+        new Assertion($columns > 0, 'Invalid dimensions given.');
 
         $this->_rows = (int)$rows;
         $this->_columns = (int)$columns;
@@ -72,10 +72,10 @@ class Matrix {
      */
     public function resize($rows, $columns) {
         $rows = (int)$rows;
-        new \Libraries\Assertion($rows > 0, 'Invalid dimensions given.');
+        new Assertion($rows > 0, 'Invalid dimensions given.');
 
         $columns = (int)$columns;
-        new \Libraries\Assertion($columns > 0, 'Invalid dimensions given.');
+        new Assertion($columns > 0, 'Invalid dimensions given.');
         
         
         if (TRUE === $this->_transposed) {
@@ -97,9 +97,9 @@ class Matrix {
      * @return	boolean	equals
      */
     public function equals($matrix) {
-        new \Libraries\Assertion($matrix instanceof Matrix, 'Given matrix not of class Matrix.');
-        new \Libraries\Assertion($this->rows() == $matrix->rows(), 'Matrices do not have same dimensions.');
-        new \Libraries\Assertion($this->columns() == $matrix->columns(), 'Matrices do not have same dimensions.');
+        new Assertion($matrix instanceof Matrix, 'Given matrix not of class Matrix.');
+        new Assertion($this->rows() == $matrix->rows(), 'Matrices do not have same dimensions.');
+        new Assertion($this->columns() == $matrix->columns(), 'Matrices do not have same dimensions.');
 
         for ($i = 0; $i < $this->rows(); $i++) {
             for ($j = 0; $j < $this->columns(); $j++) {
@@ -151,8 +151,8 @@ class Matrix {
         $row = (int)$row;
         $column = (int)$column;
         
-        new \Libraries\Assertion($row >= 0 AND $row < $this->rows(), 'Tried to access invalid entry.');
-        new \Libraries\Assertion($column >= 0 AND $column < $this->columns(), 'Tried to access invalid entry.');
+        new Assertion($row >= 0 AND $row < $this->rows(), 'Tried to access invalid entry.');
+        new Assertion($column >= 0 AND $column < $this->columns(), 'Tried to access invalid entry.');
         
         $value = NULL;
         
@@ -187,8 +187,8 @@ class Matrix {
         $row = (int)$row;
         $column = (int)$column;
         
-        new \Libraries\Assertion($row >= 0 AND $row < $this->rows(), 'Tried to access invalid entry.');
-        new \Libraries\Assertion($column >= 0 AND $column < $this->columns(), 'Tried to access invalid entry.');
+        new Assertion($row >= 0 AND $row < $this->rows(), 'Tried to access invalid entry.');
+        new Assertion($column >= 0 AND $column < $this->columns(), 'Tried to access invalid entry.');
         
         // Check whether matrix has been transposed.
         if (TRUE === $this->_transposed) {
@@ -250,7 +250,7 @@ class Matrix {
     public function asVector($column) {
         $column = (int)$column;
 
-        new \Libraries\Assertion($column >= 0 AND $column < $this->columns(), 'Tried to access invalid column number.');
+        new Assertion($column >= 0 AND $column < $this->columns(), 'Tried to access invalid column number.');
 
         $vector = new Matrix($this->rows(), $this->columns());
 
@@ -286,7 +286,7 @@ class Matrix {
      * @return	matrix	this
      */
     public function fromArray($array) {
-        new \Libraries\Assertion(is_array($array), 'No array given.');
+        new Assertion(is_array($array), 'No array given.');
 
         // TODO: assert that all values within the array are defined?
 
@@ -309,8 +309,8 @@ class Matrix {
      * @return	matrix	this
      */
     public function swapColumns($i, $j) {
-        new \Libraries\Assertion($i >= 0 AND $i < $this->rows(), 'Tried to access invalid entry.');
-        new \Libraries\Assertion($j >= 0 AND $j < $this->rows(), 'Tried to access invalid entry.');
+        new Assertion($i >= 0 AND $i < $this->rows(), 'Tried to access invalid entry.');
+        new Assertion($j >= 0 AND $j < $this->rows(), 'Tried to access invalid entry.');
 
         for ($k = 0; $k < $this->rows(); $k++) {
             $tmp = $this->get($k, $i);
@@ -329,8 +329,8 @@ class Matrix {
      * @return  matrix  this
      */
     public function swapRows($i, $j) {
-        new \Libraries\Assertion($i >= 0 AND $i < $this->rows(), 'Tried to access invalid entry.');
-        new \Libraries\Assertion($j >= 0 AND $j < $this->rows(), 'Tried to access invalid entry.');
+        new Assertion($i >= 0 AND $i < $this->rows(), 'Tried to access invalid entry.');
+        new Assertion($j >= 0 AND $j < $this->rows(), 'Tried to access invalid entry.');
 
         for ($k = 0; $k < $this->columns(); $k++) {
             $tmp = $this->get($i, $k);
@@ -370,10 +370,10 @@ class Matrix {
      * @return  matrix  $a + $b
      */
     public static function add($a, $b) {
-        new \Libraries\Assertion($a instanceof Matrix, 'Given first matrix not of class Matrix.');
-        new \Libraries\Assertion($b instanceof Matrix, 'Given second matrix not of class Matrix.');
-        new \Libraries\Assertion($a->rows() == $b->rows(), 'Given dimensions are not compatible.');
-        new \Libraries\Assertion($a->columns() == $b->columns(), 'Given dimensions are not compatible.');
+        new Assertion($a instanceof Matrix, 'Given first matrix not of class Matrix.');
+        new Assertion($b instanceof Matrix, 'Given second matrix not of class Matrix.');
+        new Assertion($a->rows() == $b->rows(), 'Given dimensions are not compatible.');
+        new Assertion($a->columns() == $b->columns(), 'Given dimensions are not compatible.');
 
         $rows = $a->rows();
         $columns = $a->columns();
@@ -398,9 +398,9 @@ class Matrix {
      */
     public static function multiply($a, $b) {
         // First check dimensions.
-        new \Libraries\Assertion($a instanceof Matrix, 'Given first matrix not of class Matrix.');
-        new \Libraries\Assertion($b instanceof Matrix, 'Given second matrix not of class Matrix.');
-        new \Libraries\Assertion($a->columns() == $b->rows(), 'Given dimensions are not compatible.');
+        new Assertion($a instanceof Matrix, 'Given first matrix not of class Matrix.');
+        new Assertion($b instanceof Matrix, 'Given second matrix not of class Matrix.');
+        new Assertion($a->columns() == $b->rows(), 'Given dimensions are not compatible.');
 
         $c = new Matrix($a->rows(), $b->columns());
         $c->setAll(0.);
@@ -425,11 +425,11 @@ class Matrix {
      */
     public static function operate($matrix, $vector) {
         // First check dimensions.
-        new \Libraries\Assertion($matrix instanceof Matrix, 'Given matrix not of class Matrix.');
-        new \Libraries\Assertion($vector instanceof Vector, 'Given vector not of class Vector.');
-        new \Libraries\Assertion($matrix->columns() == $vector->size(), 'Given dimensions are not compatible.');
+        new Assertion($matrix instanceof Matrix, 'Given matrix not of class Matrix.');
+        new Assertion($vector instanceof Vector, 'Given vector not of class Vector.');
+        new Assertion($matrix->columns() == $vector->size(), 'Given dimensions are not compatible.');
         
-        $result = new \Libraries\Vector($matrix->rows());
+        $result = new Vector($matrix->rows());
         $result->setAll(0.);
         
         for ($i = 0; $i < $matrix->rows(); $i++) {

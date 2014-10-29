@@ -35,7 +35,7 @@ class QRGivensWithTrace extends QRGivens {
      * @param   matrix  matrix to get the qr decomposition of
      */
     public function __construct(&$matrix) {
-        new \Libraries\Assertion($matrix instanceof \Libraries\Matrix, 'Given matrix not of class Matrix.');
+        new Assertion($matrix instanceof Matrix, 'Given matrix not of class Matrix.');
 
         $this->_matrix = $matrix->copy();
 
