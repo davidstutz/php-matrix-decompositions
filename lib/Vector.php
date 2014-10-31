@@ -36,16 +36,16 @@ class Vector {
     /**
      * Constructor.
      *
-     * @param	int		size
+     * @param	int     size
      * @return	vector	vector
      */
     public function __construct($size) {
         $this->_data = array();
 
-        $size = (int)$size;
+        $size = (int) $size;
         new Assertion($size > 0, 'Invalid size given.');
 
-        $this->_size = (int)$size;
+        $this->_size = $size;
     }
 
     /**
