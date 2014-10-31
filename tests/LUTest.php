@@ -16,12 +16,12 @@
  */
 
 /**
- * DecompositionsLUTest class.
+ * LUTest class.
  *
  * @author  David Stutz
  * @license http://www.gnu.org/licenses/gpl-3.0
  */
-class DecompositionsLUTest extends \PHPUnit_Framework_TestCase {
+class LUTest extends \PHPUnit_Framework_TestCase {
     
     /**
      * Provides data for testing the decomposition.
@@ -89,10 +89,10 @@ class DecompositionsLUTest extends \PHPUnit_Framework_TestCase {
      * @param   double  determinant
      */
     public function testLUDecomposition($array, $expectedPermutation, $expectedL, $expectedU) {
-        $matrix = new \Libraries\Matrix(sizeof($array), sizeof($array[0]));
+        $matrix = new Matrix(sizeof($array), sizeof($array[0]));
         $matrix->fromArray($array);
         
-        $decomposition = new \Libraries\Decompositions\LU($matrix);
+        $decomposition = new LU($matrix);
         
         $this->assertSame($expectedL, $decomposition->getL()->asArray());
         $this->assertSame($expectedU, $decomposition->getU()->asArray());

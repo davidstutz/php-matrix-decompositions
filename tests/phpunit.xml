@@ -1,7 +1,9 @@
-<phpunit colors="true" bootstrap="../../test.php">
+<phpunit bootstrap="tests.php">
     <testsuites>
         <testsuite>
-            <directory>./</directory>
+            <file>VectorTest.php</file>
+            <file>MatrixTest.php</file>
+            <file>LUTest.php</file>
         </testsuite>
     </testsuites>
 </phpunit>

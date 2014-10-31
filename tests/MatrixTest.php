@@ -54,7 +54,7 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   int columns
      */
     public function testConstruct($rows, $columns) {
-        $matrix = new \Libraries\Matrix($rows, $columns);
+        $matrix = new Matrix($rows, $columns);
         
         $this->assertSame($rows, $matrix->rows());
         $this->assertSame($columns, $matrix->columns());
@@ -124,7 +124,7 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   mixed   columns
      */
     public function testConstructExceptions($rows, $columns) {
-        $matrix = new \Libraries\Matrix($rows, $columns);
+        $matrix = new Matrix($rows, $columns);
     }
     
     /**
@@ -158,7 +158,7 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   mixed   columns
      */
     public function testResize($rows, $columns) {
-        $matrix = new \Libraries\Matrix(1, 1);
+        $matrix = new Matrix(1, 1);
         
         $matrix->resize($rows, $columns);
         
@@ -230,7 +230,7 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   mixed   columns
      */
     public function testResizeExceptions($rows, $columns) {
-        $matrix = new \Libraries\Matrix(10, 10);
+        $matrix = new Matrix(10, 10);
         
         $matrix->resize($rows, $columns);
     }
@@ -280,7 +280,7 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   array   matrix
      */
     public function testFromArray($array) {
-        $matrix = new \Libraries\Matrix(sizeof($array), sizeof($array[0]));
+        $matrix = new Matrix(sizeof($array), sizeof($array[0]));
         
         $matrix->fromArray($array);
         
@@ -326,7 +326,7 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   boolean square
      */
     public function testIsSquare($rows, $columns, $expected) {
-        $matrix = new \Libraries\Matrix($rows, $columns);
+        $matrix = new Matrix($rows, $columns);
         
         $this->assertSame($expected, $matrix->isSquare());
     }
@@ -376,7 +376,7 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   array   matrix
      */
     public function testAsArray($array) {
-        $matrix = new \Libraries\Matrix(sizeof($array), sizeof($array[0]));
+        $matrix = new Matrix(sizeof($array), sizeof($array[0]));
         
         $matrix->fromArray($array);
         
@@ -460,8 +460,8 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   boolean expected
      */
     public function testEquals($first, $second, $expected) {
-        $firstMatrix = new \Libraries\Matrix(sizeof($first), sizeof($first[0]));
-        $secondMatrix = new \Libraries\Matrix(sizeof($second), sizeof($second[0]));
+        $firstMatrix = new Matrix(sizeof($first), sizeof($first[0]));
+        $secondMatrix = new Matrix(sizeof($second), sizeof($second[0]));
         
         $firstMatrix->fromArray($first);
         $secondMatrix->fromArray($second);
@@ -512,8 +512,8 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   array   second matrix
      */
     public function testEqualsExceptions($first, $second) {
-        $firstMatrix = new \Libraries\Matrix(sizeof($first), sizeof($first[0]));
-        $secondMatrix = new \Libraries\Matrix(sizeof($second), sizeof($second[0]));
+        $firstMatrix = new Matrix(sizeof($first), sizeof($first[0]));
+        $secondMatrix = new Matrix(sizeof($second), sizeof($second[0]));
         
         $firstMatrix->fromArray($first);
         $secondMatrix->fromArray($second);
@@ -596,7 +596,7 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   mixed   columns
      */
     public function testGetExceptions($array, $row, $column) {
-        $matrix = new \Libraries\Matrix(sizeof($array), sizeof($array[0]));
+        $matrix = new Matrix(sizeof($array), sizeof($array[0]));
         
         $matrix->fromArray($array);
         
@@ -660,7 +660,7 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   mixed   columns
      */
     public function testSetExceptions($array, $row, $column) {
-        $matrix = new \Libraries\Matrix(sizeof($array), sizeof($array[0]));
+        $matrix = new Matrix(sizeof($array), sizeof($array[0]));
         
         $matrix->fromArray($array);
         
@@ -703,7 +703,7 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   mixed   value
      */
     public function testSetAll($value) {
-        $matrix = new \Libraries\Matrix(10, 10);
+        $matrix = new Matrix(10, 10);
         
         $matrix->setAll($value);
         
@@ -759,7 +759,7 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   array   matrix
      */
     public function testCopy($array) {
-        $matrix = new \Libraries\Matrix(sizeof($array), sizeof($array[0]));
+        $matrix = new Matrix(sizeof($array), sizeof($array[0]));
         
         $copy = $matrix->copy();
         
@@ -834,7 +834,7 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   array   expected
      */
     public function testSwapColumns($array, $i, $j, $expected) {
-        $matrix = new \Libraries\Matrix(sizeof($array), sizeof($array[0]));
+        $matrix = new Matrix(sizeof($array), sizeof($array[0]));
         
         $matrix->fromArray($array);
         
@@ -908,7 +908,7 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   array   expected
      */
     public function testSwapRows($array, $i, $j, $expected) {
-        $matrix = new \Libraries\Matrix(sizeof($array), sizeof($array[0]));
+        $matrix = new Matrix(sizeof($array), sizeof($array[0]));
         
         $matrix->fromArray($array);
         
@@ -982,7 +982,7 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   int     columns
      */
     public function testTranspose($array, $transposed, $expectedRows, $expectedColumns) {
-        $matrix = new \Libraries\Matrix(sizeof($array), sizeof($array[0]));
+        $matrix = new Matrix(sizeof($array), sizeof($array[0]));
         $matrix->fromArray($array);
         $matrix->transpose();
         
@@ -1090,13 +1090,13 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   array   product
      */
     public function testMultiply($a, $b, $product) {
-        $matrixA = new \Libraries\Matrix(sizeof($a), sizeof($a[0]));
-        $matrixB = new \Libraries\Matrix(sizeof($b), sizeof($b[0]));
+        $matrixA = new Matrix(sizeof($a), sizeof($a[0]));
+        $matrixB = new Matrix(sizeof($b), sizeof($b[0]));
         
         $matrixA->fromArray($a);
         $matrixB->fromArray($b);
         
-        $this->assertSame($product, \Libraries\Matrix::multiply($matrixA, $matrixB)->asArray());
+        $this->assertSame($product, Matrix::multiply($matrixA, $matrixB)->asArray());
     }
     
     /**
@@ -1145,13 +1145,13 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   array   product
      */
     public function testMultiplyExceptions($a, $b) {
-        $matrixA = new \Libraries\Matrix(sizeof($a), sizeof($a[0]));
-        $matrixB = new \Libraries\Matrix(sizeof($b), sizeof($b[0]));
+        $matrixA = new Matrix(sizeof($a), sizeof($a[0]));
+        $matrixB = new Matrix(sizeof($b), sizeof($b[0]));
         
         $matrixA->fromArray($a);
         $matrixB->fromArray($b);
         
-        \Libraries\Matrix::multiply($matrixA, $matrixB);
+        Matrix::multiply($matrixA, $matrixB);
     }
     
     /**
@@ -1194,13 +1194,13 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   array   sum
      */
     public function testAdd($a, $b, $sum) {
-        $matrixA = new \Libraries\Matrix(sizeof($a), sizeof($a[0]));
-        $matrixB = new \Libraries\Matrix(sizeof($b), sizeof($b[0]));
+        $matrixA = new Matrix(sizeof($a), sizeof($a[0]));
+        $matrixB = new Matrix(sizeof($b), sizeof($b[0]));
         
         $matrixA->fromArray($a);
         $matrixB->fromArray($b);
         
-        $this->assertSame($sum, \Libraries\Matrix::add($matrixA, $matrixB)->asArray());
+        $this->assertSame($sum, Matrix::add($matrixA, $matrixB)->asArray());
     }
     
     /**
@@ -1250,13 +1250,13 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   array   product
      */
     public function testAddExceptions($a, $b) {
-        $matrixA = new \Libraries\Matrix(sizeof($a), sizeof($a[0]));
-        $matrixB = new \Libraries\Matrix(sizeof($b), sizeof($b[0]));
+        $matrixA = new Matrix(sizeof($a), sizeof($a[0]));
+        $matrixB = new Matrix(sizeof($b), sizeof($b[0]));
         
         $matrixA->fromArray($a);
         $matrixB->fromArray($b);
         
-        \Libraries\Matrix::add($matrixA, $matrixB);
+        Matrix::add($matrixA, $matrixB);
     }
     
     /**
@@ -1305,13 +1305,13 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   array   result
      */
     public function testOperate($matrix, $vector, $result) {
-        $matrixMatrix = new \Libraries\Matrix(sizeof($matrix), sizeof($matrix[0]));
-        $vectorVector = new \Libraries\Vector(sizeof($vector));
+        $matrixMatrix = new Matrix(sizeof($matrix), sizeof($matrix[0]));
+        $vectorVector = new Vector(sizeof($vector));
         
         $matrixMatrix->fromArray($matrix);
         $vectorVector->fromArray($vector);
         
-        $resultVector = \Libraries\Matrix::operate($matrixMatrix, $vectorVector);
+        $resultVector = Matrix::operate($matrixMatrix, $vectorVector);
         
         $this->assertSame($resultVector->asArray(), $result);
     }
@@ -1356,13 +1356,13 @@ class MatrixTest extends \PHPUnit_Framework_TestCase {
      * @param   array   vector
      */
     public function testOperateExceptions($matrix, $vector) {
-        $matrixMatrix = new \Libraries\Matrix(sizeof($matrix), sizeof($matrix[0]));
-        $vectorVector = new \Libraries\Vector(sizeof($vector));
+        $matrixMatrix = new Matrix(sizeof($matrix), sizeof($matrix[0]));
+        $vectorVector = new Vector(sizeof($vector));
         
         $matrixMatrix->fromArray($matrix);
         $vectorVector->fromArray($vector);
         
-        \Libraries\Matrix::operate($matrixMatrix, $vectorVector);
+        Matrix::operate($matrixMatrix, $vectorVector);
     }
 }
     

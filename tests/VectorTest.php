@@ -50,7 +50,7 @@ class VectorTest extends \PHPUnit_Framework_TestCase {
      * @param   int size
      */
     public function testConstruct($size) {
-        $vector = new \Libraries\Vector($size);
+        $vector = new Vector($size);
         
         $this->assertSame($size, $vector->size());
     }
@@ -92,7 +92,7 @@ class VectorTest extends \PHPUnit_Framework_TestCase {
      * @param   mixed   size
      */
     public function testConstructExceptions($size) {
-        $vector = new \Libraries\Vector($size);
+        $vector = new Vector($size);
     }
     
     /**
@@ -122,7 +122,7 @@ class VectorTest extends \PHPUnit_Framework_TestCase {
      * @param   int size
      */
     public function testResize($size) {
-        $vector = new \Libraries\Vector(1);
+        $vector = new Vector(1);
         
         $vector->resize($size);
         
@@ -156,7 +156,7 @@ class VectorTest extends \PHPUnit_Framework_TestCase {
      * @param   array   array
      */
     public function testFromArray($array) {
-        $vector = new \Libraries\Vector(sizeof($array));
+        $vector = new Vector(sizeof($array));
         
         $vector->fromArray($array);
         
@@ -192,7 +192,7 @@ class VectorTest extends \PHPUnit_Framework_TestCase {
      * @param   array   array
      */
     public function testAsArray($array) {
-        $vector = new \Libraries\Vector(sizeof($array));
+        $vector = new Vector(sizeof($array));
         
         $vector->fromArray($array);
         
@@ -234,8 +234,8 @@ class VectorTest extends \PHPUnit_Framework_TestCase {
      * @param   boolean expected
      */
     public function testEquals($first, $second, $expected) {
-        $firstVector = new \Libraries\Vector(sizeof($first));
-        $secondVector = new \Libraries\Vector(sizeof($second));
+        $firstVector = new Vector(sizeof($first));
+        $secondVector = new Vector(sizeof($second));
         
         $firstVector->fromArray($first);
         $secondVector->fromArray($second);
@@ -280,7 +280,7 @@ class VectorTest extends \PHPUnit_Framework_TestCase {
      * @param   mixed   value
      */
     public function testSetAll($value) {
-        $vector = new \Libraries\Vector(10);
+        $vector = new Vector(10);
         
         $vector->setAll($value);
         
@@ -322,7 +322,7 @@ class VectorTest extends \PHPUnit_Framework_TestCase {
      * @param   array   expected
      */
     public function testSwapEntries($array, $i, $j, $expected) {
-        $vector = new \Libraries\Vector(sizeof($array));
+        $vector = new Vector(sizeof($array));
         
         $vector->fromArray($array);
         
