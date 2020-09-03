@@ -2,8 +2,6 @@
 
 Matrix Decompositions is a PHP library providing several common matrix decompositions and their applications: LU decomposition, QR decomposition using Givens rotations or Householder transformations and Choleksy decomposition.
 
-See here for details and demonstration: [http://davidstutz.de/matrix-decompositions/](http://davidstutz.de/matrix-decompositions/).
-
 ## License
 
 Copyright 2013 - 2014 David Stutz
